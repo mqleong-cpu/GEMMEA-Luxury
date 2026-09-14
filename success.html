@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f7f2ea">
+<link rel="canonical" href="https://mqleong-cpu.github.io/GEMMEA-Luxury/success.html">
+<link rel="icon" href="gemmea-logo.jpg">
+<title>Order Confirmed &mdash; Gemm&eacute;a</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="gemmea.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="utility-bar">
+  <p>Complimentary insured shipping in Singapore &middot; Private previews by appointment</p>
+</div>
+
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">Gemm&eacute;a</a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="necklaces.html">Necklaces</a>
+      <a href="rings.html">Rings</a>
+      <a href="earrings.html">Earrings</a>
+      <a href="bracelets.html">Bracelets</a>
+      <a href="index.html#philosophy">Our Story</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="ig-link" href="https://www.instagram.com/gemmea_luxury" target="_blank" rel="noopener">@gemmea_luxury</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="necklaces.html">Necklaces &amp; Pendants</a>
+    <a href="rings.html">Rings</a>
+    <a href="earrings.html">Earrings</a>
+    <a href="bracelets.html">Bracelets</a>
+    <a href="index.html#philosophy">Our Story</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="https://www.instagram.com/gemmea_luxury" target="_blank" rel="noopener">@gemmea_luxury</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="cat-intro" style="text-align:center; padding-top:4rem; padding-bottom:4rem;">
+    <p class="eyebrow">Thank You</p>
+    <h1>Your order is confirmed</h1>
+    <p>We've received your payment and a confirmation email is on its way from Stripe. Your piece will be
+       carefully packaged and shipped with insured delivery within Singapore — we'll be in touch on Instagram
+       or by email with tracking details.</p>
+    <p style="margin-top:2rem;">
+      <a class="btn btn-primary" href="index.html">Continue Browsing</a>
+      &nbsp;
+      <a class="btn btn-ghost" href="https://www.instagram.com/gemmea_luxury" target="_blank" rel="noopener">Message Us on Instagram</a>
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="wordmark">Gemm&eacute;a</p>
+      <p>Energy. Elegance. Essence.</p>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <h4>Shop</h4>
+        <a href="necklaces.html">Necklaces &amp; Pendants</a>
+        <a href="rings.html">Rings</a>
+        <a href="earrings.html">Earrings</a>
+        <a href="bracelets.html">Bracelets</a>
+      </div>
+      <div>
+        <h4>About</h4>
+        <a href="index.html#philosophy">Our Story</a>
+        <a href="index.html#featured">The Edit</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="https://www.instagram.com/gemmea_luxury" target="_blank" rel="noopener">Instagram DM</a>
+        <span>Singapore</span>
+      </div>
+    </div>
+  </div>
+  <p class="footer-bottom">&copy; 2026 Gemm&eacute;a. Pieces shown are previewed and reserved by appointment.</p>
+</footer>
+
+<script>
+  // Order succeeded — clear the local cart so it doesn't linger for the next visit.
+  try { window.localStorage.removeItem("gemmea_cart_v1"); } catch (e) {}
+
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var menu = document.getElementById('mobileMenu');
+    if(toggle && menu){
+      toggle.addEventListener('click', function(){
+        var open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
+<script src="products.js"></script>
+<script src="cart.js"></script>
+</body>
+</html>
