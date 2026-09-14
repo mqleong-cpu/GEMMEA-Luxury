@@ -1,0 +1,12 @@
+name = "gemmea-checkout"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+# Non-secret configuration. Edit these if your domain changes.
+[vars]
+ALLOWED_ORIGIN = "https://mqleong-cpu.github.io"
+SITE_BASE_URL = "https://mqleong-cpu.github.io/GEMMEA-Luxury"
+
+# STRIPE_SECRET_KEY is NOT set here — it's a secret, set with:
+#   wrangler secret put STRIPE_SECRET_KEY
+# Never put the Stripe secret key in this file or commit it to GitHub.
