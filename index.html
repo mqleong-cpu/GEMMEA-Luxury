@@ -302,16 +302,21 @@
   .tile:hover img{transform:scale(1.06);}
   .tile::after{
     content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(20,16,10,0) 40%, rgba(20,16,10,0.7) 100%);
+    background:linear-gradient(180deg,
+      rgba(20,16,10,0) 30%,
+      rgba(20,16,10,0.45) 62%,
+      rgba(20,16,10,0.88) 100%);
   }
   .tile-label, .tile-note{
     position:relative; z-index:1;
+    text-shadow:0 1px 8px rgba(20,16,10,0.55);
   }
   .tile-large .tile-label{
     font-family:'Cinzel', serif; font-size:1.2rem; letter-spacing:0.06em;
   }
-  .tile-small{
-    flex-direction:column; align-items:flex-start; gap:0.35rem;
+  .tile-small, .tile-large{
+    flex-direction:column; align-items:flex-start;
+    justify-content:flex-end; gap:0.35rem;
   }
   .tile-small .tile-label{
     font-family:'Cinzel', serif; font-size:1.05rem; letter-spacing:0.06em;
@@ -624,7 +629,10 @@
       <h2>The Clover Pendant</h2>
       <p>Mother-of-pearl petals set in rose gold, finished with a pav&eacute; centre stone on a fine bezel-set chain. A more beautiful you, one clover at a time.</p>
       <p class="price">Priced upon request</p>
-      <a class="btn btn-primary" href="https://www.instagram.com/gemmea_luxury" target="_blank" rel="noopener">Enquire on Instagram</a>
+      <div class="hero-actions" style="margin-top:0;">
+        <a class="btn btn-primary" href="https://www.instagram.com/gemmea_luxury" target="_blank" rel="noopener">Enquire on Instagram</a>
+        <a class="btn btn-ghost" href="necklaces.html">View all necklaces</a>
+      </div>
     </div>
   </section>
 
@@ -634,25 +642,26 @@
       <h2>Browse by category</h2>
     </div>
     <div class="mosaic">
-      <div class="tile tile-large">
+      <a class="tile tile-large" href="necklaces.html">
         <img src="double-ring-necklace.jpg" alt="Rose-gold interlocking double-ring pendant necklace with pav&eacute; diamonds" />
         <span class="tile-label">Necklaces &amp; Pendants</span>
-      </div>
-      <div class="tile tile-small">
-        <img src="ring.jpg" alt="Gemm&eacute;a ring on display" />
+        <span class="tile-note">6 pieces &middot; View collection</span>
+      </a>
+      <a class="tile tile-small" href="rings.html">
+        <img src="ring.jpg" alt="Rose-gold solitaire ring with a round brilliant stone and pav&eacute; shoulders" />
         <span class="tile-label">Rings</span>
-        <span class="tile-note">Previewed via DM</span>
-      </div>
-      <div class="tile tile-small">
-        <img src="earrings.jpg" alt="Gemm&eacute;a earrings on display" />
+        <span class="tile-note">View collection</span>
+      </a>
+      <a class="tile tile-small" href="earrings.html">
+        <img src="earrings.jpg" alt="Rose-gold halo stud earrings set with round brilliant stones" />
         <span class="tile-label">Earrings</span>
-        <span class="tile-note">Previewed via DM</span>
-      </div>
-      <div class="tile tile-small">
-        <img src="bracelet.jpg" alt="Gemm&eacute;a bracelet on display" />
+        <span class="tile-note">View collection</span>
+      </a>
+      <a class="tile tile-small" href="bracelets.html">
+        <img src="bracelet.jpg" alt="Rose-gold tennis bracelet set with a line of claw-set round brilliant stones" />
         <span class="tile-label">Bracelets</span>
-        <span class="tile-note">Previewed via DM</span>
-      </div>
+        <span class="tile-note">View collection</span>
+      </a>
     </div>
   </section>
 
@@ -693,10 +702,10 @@
     <div class="footer-cols">
       <div>
         <h4>Shop</h4>
-        <a href="#collections">Necklaces &amp; Pendants</a>
-        <a href="#collections">Rings</a>
-        <a href="#collections">Earrings</a>
-        <a href="#collections">Bracelets</a>
+        <a href="necklaces.html">Necklaces &amp; Pendants</a>
+        <a href="rings.html">Rings</a>
+        <a href="earrings.html">Earrings</a>
+        <a href="bracelets.html">Bracelets</a>
       </div>
       <div>
         <h4>About</h4>
