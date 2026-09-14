@@ -23,11 +23,8 @@ Shopper's browser  →  Cloudflare Worker  →  Stripe
   button.
 - `success.html` and `cancel.html` — the pages Stripe sends shoppers back
   to after paying or backing out.
-- `index.js` and `wrangler.toml` — the Cloudflare Worker code that creates
-  the Stripe Checkout session. These two sit as plain files at the top
-  level of your repo (not in a subfolder) so they're easy to drag-and-drop
-  into GitHub the same way as everything else — GitHub Pages just ignores
-  them since they're not linked from any page.
+- `stripe-worker/` — the Cloudflare Worker code that creates the Stripe
+  Checkout session.
 
 ## Step 0 — Set your real prices (do this first)
 
@@ -35,10 +32,10 @@ Every price right now is a **placeholder**. Before taking real orders, edit:
 
 1. `products.js` — the `price` field for each product (in cents, so
    S$488.00 is `48800`).
-2. `index.js` — the matching `PRODUCTS` list near the top must have the
-   **exact same prices**. This is the copy Stripe actually charges, so if
-   the two ever disagree, the Worker's number wins and the site will just
-   be showing the wrong price to shoppers.
+2. `stripe-worker/src/index.js` — the matching `PRODUCTS` list near the top
+   must have the **exact same prices**. This is the copy Stripe actually
+   charges, so if the two ever disagree, the Worker's number wins and the
+   site will just be showing the wrong price to shoppers.
 
 Easiest path: message Claude with the real price for each piece (or a
 photo of your price list) and ask it to update both files together.
@@ -63,9 +60,7 @@ photo of your price list) and ask it to update both files together.
 ## Step 3 — Install the Cloudflare CLI (wrangler)
 
 You'll need Node.js installed on your computer (nodejs.org, the LTS
-version). Then, in a terminal, in a folder that has both `index.js` and
-`wrangler.toml` sitting next to each other (e.g. a fresh clone of your
-GitHub repo, or your `github-upload` staging folder):
+version). Then, in a terminal, inside the `stripe-worker` folder:
 
 ```
 npm install -g wrangler
@@ -77,7 +72,7 @@ wrangler login
 
 ## Step 4 — Deploy the Worker
 
-From that same folder (`index.js` and `wrangler.toml` side by side):
+Still inside the `stripe-worker` folder:
 
 ```
 wrangler deploy
@@ -109,9 +104,9 @@ Replace it with the URL from Step 4, e.g.:
 var WORKER_URL = "https://gemmea-checkout.fiona-abc1.workers.dev";
 ```
 
-Save, then push the changed `cart.js` to GitHub the way you normally do
-(stage it in your `github-upload` folder and upload/push), or ask Claude
-to help.
+Save, then push all the changed files to GitHub the way you normally do
+(stage them in your `github-upload` folder and push to
+`mqleong-cpu/GEMMEA-Luxury`), or ask Claude to help commit and push them.
 
 ## Step 6 — Test it end to end (still in Stripe test mode)
 
@@ -132,9 +127,9 @@ to help.
    prompt you) and add your Singapore bank account for payouts.
 2. Toggle off **Test mode** in the Dashboard, go to **Developers → API
    keys**, and copy the **live** secret key (starts with `sk_live_...`).
-3. Run `wrangler secret put STRIPE_SECRET_KEY` again (from the folder with
-   `index.js` and `wrangler.toml`) and paste the live key. Nothing else
-   needs to change — the Worker URL and `cart.js` stay the same.
+3. Run `wrangler secret put STRIPE_SECRET_KEY` again from the
+   `stripe-worker` folder and paste the live key. Nothing else needs to
+   change — the Worker URL and `cart.js` stay the same.
 4. Place one small real order yourself to confirm everything works, then
    you're live.
 
@@ -143,9 +138,10 @@ to help.
 Since you'd rather ask Claude than run a CMS: just message Claude with the
 new piece's details (name, price, description, category, photo) or a price
 change, and ask it to update `products.js` **and** the matching entry in
-`index.js`, then push the changes. No redeploy of the Worker is needed for
-a products.js-only change — but if `index.js` changes too, run
-`wrangler deploy` again (no need to touch the secret key again).
+`stripe-worker/src/index.js`, then push the changes. No redeploy of the
+Worker is needed for a products.js-only change — but if the Worker file
+changes too, run `wrangler deploy` again from `stripe-worker` (no need to
+touch the secret key again).
 
 ## Notes on how this cart works
 
@@ -157,4 +153,4 @@ a products.js-only change — but if `index.js` changes too, run
   existing shipping copy.
 - The Worker is the only place that decides what things actually cost —
   even if someone tampered with prices in their browser, Stripe would
-  still charge the real price from `index.js`.
+  still charge the real price from `stripe-worker/src/index.js`.

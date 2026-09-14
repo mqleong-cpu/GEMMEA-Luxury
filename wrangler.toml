@@ -1,5 +1,5 @@
 name = "gemmea-checkout"
-main = "src/index.js"
+main = "index.js"
 compatibility_date = "2026-09-01"
 
 # Non-secret configuration. Edit these if your domain changes.
